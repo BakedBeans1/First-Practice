@@ -15,6 +15,7 @@ import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.VariableVault;
 import edu.wpi.first.wpilibj.Joystick;
+import edu.wpi.first.wpilibj.Timer;
 import frc.robot.RobotContainer;
 
 public class Drivetrain extends SubsystemBase {
@@ -49,6 +50,16 @@ public class Drivetrain extends SubsystemBase {
 
   public void OperatorDrive(Joystick stick) {
     drive.arcadeDrive(-stick.getY(), -stick.getZ());
+  }
+
+  public void TimedDrive(double seconds){
+    drive.arcadeDrive(0.5, 0);
+    Timer.delay(seconds);
+    drive.arcadeDrive(0, 0);
+  }
+
+  public void Stop() {
+    drive.stopMotor();
   }
 
 }
